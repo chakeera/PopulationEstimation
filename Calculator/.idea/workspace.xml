@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="8c03d64b-3b9c-4822-b103-6c90a472eb63" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+=======
+    <list default="true" id="8c03d64b-3b9c-4822-b103-6c90a472eb63" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/decomposition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Eigen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Eigen.java" afterDir="false" />
+    </list>
+>>>>>>> 10246d35e84131665446c1afebf9d8eaf327a564
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,8 +103,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584452057712</updated>
+<<<<<<< HEAD
       <workItem from="1584452061809" duration="954000" />
       <workItem from="1584542549038" duration="149000" />
+=======
+      <workItem from="1584452061809" duration="2936000" />
+>>>>>>> 10246d35e84131665446c1afebf9d8eaf327a564
     </task>
     <servers />
   </component>
