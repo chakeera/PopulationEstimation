@@ -2,25 +2,36 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainWindow {
     public static void main(String args[]) {
         JFrame frame = new JFrame("Home");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 200);
+        frame.setResizable(false);
 
         JPanel topPanel = new JPanel();
         JLabel label = new JLabel("Main Screen");
         topPanel.add(BorderLayout.CENTER, label);
 
         JPanel centerPanel = new JPanel();
-        JButton button1 = new JButton("Get Year Population");
-        JButton button2 = new JButton("Estimate Region Population");
-        centerPanel.add(button1);
-        centerPanel.add(button2);
+        JButton getPopButton = new JButton("Population in Thailand");
+        JButton estimatePopButton = new JButton("Estimation of Population");
+        centerPanel.add(getPopButton);
+        centerPanel.add(estimatePopButton);
 
-        frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-        frame.getContentPane().add(BorderLayout.CENTER, centerPanel);
+        frame.getContentPane().add(topPanel, BorderLayout.NORTH);
+        frame.getContentPane().add(centerPanel, BorderLayout.CENTER);
         frame.setVisible(true);
+
+        final CurrentPopulationWindow currentPopulationWindow = new CurrentPopulationWindow();
+
+        getPopButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                currentPopulationWindow.showScreen();
+            }
+        });
     }
 }
