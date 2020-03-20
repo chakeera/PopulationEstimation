@@ -4,13 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Database.*;
 
 public class CurrentPopulationWindow {
+
     public void showWindow()
     {
+        int width = 500;
+        int height = 500;
+
         JFrame frame = new JFrame("Population in Thailand");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(500, 200);
+        frame.setSize(width, height);
         frame.setResizable(false);
 
         JPanel topPanel = new JPanel();
@@ -46,17 +51,26 @@ public class CurrentPopulationWindow {
         resultLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
         bottomPanel.add(resultLabel);
         bottomPanel.setBorder(BorderFactory.createTitledBorder("Result"));
-        bottomPanel.setPreferredSize(new Dimension(500, 75));
+        bottomPanel.setPreferredSize(new Dimension(width, 3*height/4));
 
         frame.getContentPane().add(topPanel, BorderLayout.NORTH);
         frame.getContentPane().add(centerPanel, BorderLayout.CENTER);
         frame.getContentPane().add(bottomPanel, BorderLayout.SOUTH);
         frame.setVisible(true);
 
+        final DBConnect dbConnect = new DBConnect();
+
         calculateButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                resultLabel.setText("You have chosen year " + yearList.getSelectedItem() + " and region " +
-                regionList.getSelectedItem());
+                StringBuilder sb = new StringBuilder();
+                for (String str: dbConnect.connectDB())
+                {
+                    sb.append(str);
+                    sb.append("<br>");
+                    System.out.println(str);
+                }
+                resultLabel.setText("<html><body>You have chosen year " + yearList.getSelectedItem() + " and region " +
+                regionList.getSelectedItem() +"<br> Test: " + sb.toString() + "</body></html>");
             }
         });
 
