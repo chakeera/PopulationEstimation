@@ -3,7 +3,7 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 
-public class Main_Screen {
+public class MainScreen {
     public static void main(String args[]) {
         JFrame frame = new JFrame("Home");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
