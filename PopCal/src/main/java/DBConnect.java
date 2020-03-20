@@ -1,15 +1,10 @@
-package Database;
-
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DBConnect
 {
-    public List<String> connectDB()
+    public String connectDB()
     {
 
-        List<String> results = new ArrayList<String>();
         try{
             String url = ""; // {dbUrl}/{schema}
             String username = "";
@@ -24,14 +19,13 @@ public class DBConnect
             ResultSet resultSet = statement.executeQuery(""); //Enter query
             while (resultSet.next())
             {
-                results.add(resultSet.getString(1));
-//                System.out.println(resultSet.getString(1));
+                System.out.println(resultSet.getString(1));
             }
 
         } catch (Exception e) {
             System.out.println(e);
         }
-        return results;
+        return "";
     }
 
     public static void main(String[] args) {
