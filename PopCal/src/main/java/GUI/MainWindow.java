@@ -27,10 +27,17 @@ public class MainWindow {
         frame.setVisible(true);
 
         final CurrentPopulationWindow currentPopulationWindow = new CurrentPopulationWindow();
+        final EstimationWindow estimationWindow = new EstimationWindow();
 
         getPopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                currentPopulationWindow.showScreen();
+                currentPopulationWindow.showWindow();
+            }
+        });
+
+        estimatePopButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                estimationWindow.showWindow();
             }
         });
     }
