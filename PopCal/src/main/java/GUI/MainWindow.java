@@ -7,9 +7,12 @@ import java.awt.event.ActionListener;
 
 public class MainWindow {
     public static void main(String args[]) {
+        int width = 500;
+        int height = 200;
+
         JFrame frame = new JFrame("Home");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 200);
+        frame.setSize(width, height);
         frame.setResizable(false);
 
         JPanel topPanel = new JPanel();
