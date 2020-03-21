@@ -12,13 +12,13 @@ public class EstimationWindow
         int width = 500;
         int height = 500;
 
-        JFrame frame = new JFrame("Population in Thailand");
+        JFrame frame = new JFrame("Estimation of Population");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(width, height);
         frame.setResizable(false);
 
         JPanel topPanel = new JPanel();
-        JLabel label = new JLabel("(Heading)");
+        JLabel label = new JLabel("Estimation of Population");
         topPanel.add(BorderLayout.CENTER, label);
 
         //Enter Region Panel

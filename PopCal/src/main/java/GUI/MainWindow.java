@@ -16,7 +16,7 @@ public class MainWindow {
         frame.setResizable(false);
 
         JPanel topPanel = new JPanel();
-        JLabel label = new JLabel("Main Screen");
+        JLabel label = new JLabel("Home");
         topPanel.add(BorderLayout.CENTER, label);
 
         JPanel centerPanel = new JPanel();

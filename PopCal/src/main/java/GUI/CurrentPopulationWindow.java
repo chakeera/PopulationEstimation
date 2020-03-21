@@ -8,13 +8,16 @@ import java.awt.event.ActionListener;
 public class CurrentPopulationWindow {
     public void showWindow()
     {
+        int width = 500;
+        int height = 500;
+
         JFrame frame = new JFrame("Population in Thailand");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(500, 200);
+        frame.setSize(width, height);
         frame.setResizable(false);
 
         JPanel topPanel = new JPanel();
-        JLabel label = new JLabel("(Heading)");
+        JLabel label = new JLabel("Population in Thailand");
         topPanel.add(BorderLayout.CENTER, label);
 
         //Enter Year Panel
@@ -46,7 +49,7 @@ public class CurrentPopulationWindow {
         resultLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
         bottomPanel.add(resultLabel);
         bottomPanel.setBorder(BorderFactory.createTitledBorder("Result"));
-        bottomPanel.setPreferredSize(new Dimension(500, 75));
+        bottomPanel.setPreferredSize(new Dimension(width, 3*height/4));
 
         frame.getContentPane().add(topPanel, BorderLayout.NORTH);
         frame.getContentPane().add(centerPanel, BorderLayout.CENTER);
