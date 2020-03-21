@@ -1,0 +1,7 @@
+
+docker run --name PopulationDocker -e POSTGRES_PASSWORD=1234 -d postgres
+
+
+docker exec -it PopulationDocker psql -U postgres
+
+
