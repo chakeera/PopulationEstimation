@@ -3,7 +3,7 @@
 class decomposition {
     static int MAX = 100;
     static String s="";
-    static void luDecomposition(double [][]mat, int n){
+    static double[][] luDecomposition(double [][]mat, int n){
         double [][]lower = new double[n][n];
         double [][]upper = new double[n][n];
         // Decomposing matrix into Upper and Lower
@@ -49,6 +49,7 @@ class decomposition {
             }
             System.out.print("\n");
         }
+        return upper;
     }
     static String setw(int noOfSpace) {
         s="";
