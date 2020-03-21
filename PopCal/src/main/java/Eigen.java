@@ -6,6 +6,11 @@ public class Eigen {
         List<Double> ans = new ArrayList<Double>(); //all positive eigenValues
         List<Double> vector = new ArrayList<Double>();
         long x = 0; //for indexing
+        SimpleMatrix B;
+        for (int i = 1; i < 101; i++) {
+        B = A-mu*eye(3);
+
+        }
         //to add
         return ans;
     }
