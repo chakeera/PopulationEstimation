@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class CurrentPopulationWindow {
     queries queries = new queries();
@@ -69,8 +70,14 @@ public class CurrentPopulationWindow {
             public void actionPerformed(ActionEvent e) {
                 queries.setRegion(regionList.getSelectedItem().toString());
                 queries.setYear(yearList.getSelectedItem().toString());
+                List<String> results = queries.getOffspring();
+                StringBuilder stringBuilder = new StringBuilder();
+                for (String res: results){
+                    stringBuilder.append(res);
+                    stringBuilder.append(" ");
+                }
                 resultLabel.setText("You have chosen year " + yearList.getSelectedItem() + " and region " +
-                regionList.getSelectedItem() + "\n" + queries.getOffspring());
+                regionList.getSelectedItem() + "\n" + stringBuilder.toString());
             }
         });
 

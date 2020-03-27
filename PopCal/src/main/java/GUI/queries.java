@@ -1,12 +1,21 @@
 package GUI;
 
+import java.util.ArrayList;
+import java.util.List;
+import Database.*;
+
 public class queries
 {
     String region = "";
     String year = "";
+    List<String> results = new ArrayList<String>();
+    DBConnect dbConnect = new DBConnect();
 
-    public String getOffspring(){
-        return "Select population, year from regionpopulation where region =" + region + " && year >= 2013 and <= 2018 ;";
+    public List<String> getOffspring(){
+//        String query = "Select population, year from regionpopulation where region =" + region + " && year >= 2013 and <= 2018 ;";
+        String query = "Select * from fatherchild";
+        results = dbConnect.connectDB(query);
+        return results;
     }
 
     public void setYear(String year)

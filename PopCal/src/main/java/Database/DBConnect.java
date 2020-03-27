@@ -3,37 +3,40 @@ package Database;
 import GUI.*;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBConnect
 {
-    public String connectDB()
+    public List<String> connectDB(String query)
     {
         queries queries = new queries();
+        List<String> results = new ArrayList<String>();
         try{
-            String url = ""; // {dbUrl}/{schema}
-            String username = "";
-            String password = "";
+            String url = "jdbc:mysql://localhost:3306/sample2"; // {dbUrl}/{schema}
+            String username = "sirinnear";
+            String password = "sirinnear";
 
-            Class.forName("org.postgresql.Driver");
-//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url, username, password);
 
             Statement statement = connection.createStatement();
 
-            ResultSet resultSet = statement.executeQuery(queries.getOffspring()); //Enter query
+            ResultSet resultSet = statement.executeQuery(query); //Enter query
             while (resultSet.next())
             {
-                System.out.println(resultSet.getString(1));
+                results.add(resultSet.getString(1));
             }
 
         } catch (Exception e) {
             System.out.println(e);
         }
-        return "";
+        return results;
     }
 
     public static void main(String[] args) {
         DBConnect dbConnect = new DBConnect();
-        dbConnect.connectDB();
+//        dbConnect.connectDB();
     }
 }
