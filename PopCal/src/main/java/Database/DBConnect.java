@@ -13,12 +13,12 @@ public class DBConnect
         queries queries = new queries();
         List<String> results = new ArrayList<String>();
         try{
-            String url = "jdbc:mysql://localhost:3306/sample2"; // {dbUrl}/{schema}
-            String username = "sirinnear";
-            String password = "sirinnear";
+            String url = ""; // {dbUrl}/{schema}
+            String username = "";
+            String password = "";
 
-//            Class.forName("org.postgresql.Driver");
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
+//            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url, username, password);
 
             Statement statement = connection.createStatement();
