@@ -10,7 +10,6 @@ public class DBConnect
 {
     public List<String> connectDB(String query)
     {
-        queries queries = new queries();
         List<String> results = new ArrayList<String>();
         try{
             String url = ""; // {dbUrl}/{schema}
@@ -18,7 +17,8 @@ public class DBConnect
             String password = "";
 
             Class.forName("org.postgresql.Driver");
-//            Class.forName("com.mysql.cj.jdbc.Driver");
+
+
             Connection connection = DriverManager.getConnection(url, username, password);
 
             Statement statement = connection.createStatement();

@@ -12,8 +12,7 @@ public class queries
     DBConnect dbConnect = new DBConnect();
 
     public List<String> getOffspring(){
-//        String query = "Select population, year from regionpopulation where region =" + region + " && year >= 2013 and <= 2018 ;";
-        String query = "Select * from fatherchild";
+        String query = "Select population, year from regionpopulation where region =" + region + " && year >= 2013 and <= 2018 ;";
         results = dbConnect.connectDB(query);
         return results;
     }

@@ -68,10 +68,10 @@ public class CurrentPopulationWindow {
 
         calculateButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                queries.setRegion(regionList.getSelectedItem().toString());
-                queries.setYear(yearList.getSelectedItem().toString());
-                List<String> results = queries.getOffspring();
-                StringBuilder stringBuilder = new StringBuilder();
+                queries.setRegion(regionList.getSelectedItem().toString()); //store value into variable region
+                queries.setYear(yearList.getSelectedItem().toString()); //store value into variable year
+                List<String> results = queries.getOffspring(); // get List<String> results from database
+                StringBuilder stringBuilder = new StringBuilder(); //build String for print
                 for (String res: results){
                     stringBuilder.append(res);
                     stringBuilder.append(" ");
