@@ -20,7 +20,7 @@ public class DBConnect
 
             Statement statement = connection.createStatement();
 
-            ResultSet resultSet = statement.executeQuery(queries.getOffspring("")); //Enter query
+            ResultSet resultSet = statement.executeQuery(queries.getOffspring()); //Enter query
             while (resultSet.next())
             {
                 System.out.println(resultSet.getString(1));

@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CurrentPopulationWindow {
+    queries queries = new queries();
+
     public void showWindow()
     {
         int width = 500;
@@ -44,9 +46,16 @@ public class CurrentPopulationWindow {
         centerPanel.add(calculateButton);
         centerPanel.add(resetButton);
 
-        final JLabel resultLabel = new JLabel();
+        final JTextArea resultLabel = new JTextArea();
+        resultLabel.setSize(new Dimension(width-50, 3*height/4 - 50));
+        resultLabel.setLineWrap(true);
+        resultLabel.setWrapStyleWord(true);
+        resultLabel.setBackground(UIManager.getColor("Label.background"));
+        resultLabel.setFont(UIManager.getFont("Label.font"));
+        resultLabel.setBorder(UIManager.getBorder("Label.border"));
+
         JPanel bottomPanel = new JPanel();
-        resultLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
+        bottomPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
         bottomPanel.add(resultLabel);
         bottomPanel.setBorder(BorderFactory.createTitledBorder("Result"));
         bottomPanel.setPreferredSize(new Dimension(width, 3*height/4));
@@ -58,8 +67,10 @@ public class CurrentPopulationWindow {
 
         calculateButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                queries.setRegion(regionList.getSelectedItem().toString());
+                queries.setYear(yearList.getSelectedItem().toString());
                 resultLabel.setText("You have chosen year " + yearList.getSelectedItem() + " and region " +
-                regionList.getSelectedItem());
+                regionList.getSelectedItem() + "\n" + queries.getOffspring());
             }
         });
 
