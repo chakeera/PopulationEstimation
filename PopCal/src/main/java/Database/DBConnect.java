@@ -1,10 +1,14 @@
+package Database;
+
+import GUI.*;
+
 import java.sql.*;
 
 public class DBConnect
 {
     public String connectDB()
     {
-
+        queries queries = new queries();
         try{
             String url = ""; // {dbUrl}/{schema}
             String username = "";
@@ -16,7 +20,7 @@ public class DBConnect
 
             Statement statement = connection.createStatement();
 
-            ResultSet resultSet = statement.executeQuery(queries.getOffspring); //Enter query
+            ResultSet resultSet = statement.executeQuery(queries.getOffspring("")); //Enter query
             while (resultSet.next())
             {
                 System.out.println(resultSet.getString(1));
