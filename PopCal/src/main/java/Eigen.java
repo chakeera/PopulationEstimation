@@ -129,6 +129,15 @@ public class Eigen{
         q = p;
         p = AxP(a,q);
         p = PxL(p,lambda);
-        return p; //final answer
+        return p;
+    }
+    public static double[] answer(){
+        double[] u = getEVec();
+        double[][] m = {{10,-12,-6,5,-2,6},{5,-5,-4,2,4,5},{-1,0,76,5,-6,-1},{8,9,6,4,5,6},{4,5,7,-4,-6,2},{7,-3,4,2,6,8}}; //change to matrix from sql
+        double[] v = new double[u.length];
+        for (int l = 0; l < m.length; l++) {
+            v[l] = m[l][0]*u[0]+m[l][1]*u[1]+m[l][2]*u[2]+m[l][3]*u[3]+m[l][4]*u[4]+m[l][5]*u[5];
+        }
+        return v;
     }
 }
