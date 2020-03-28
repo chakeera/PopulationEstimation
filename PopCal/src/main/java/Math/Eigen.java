@@ -164,6 +164,7 @@ public class Eigen{
             v[l] = m[l][0]*u[0]+m[l][1]*u[1]+m[l][2]*u[2]+m[l][3]*u[3]+m[l][4]*u[4]+m[l][5]*u[5];
         }
         return v;
+
     }
 
 //    public static void main(String[] args) {

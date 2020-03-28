@@ -39,7 +39,7 @@ public class MainWindow {
 //
 //        //Enter Region Panel
         JPanel regionPanel = new JPanel();
-        String[] regions = {"Bangkok", "Central", "North-eastern", "Northern", "Southern"};
+        String[] regions = {"Bangkok", "Central ", "North-eastern", "Northern", "Southern"};
         final JComboBox regionList = new JComboBox(regions);
         regionPanel.add(new JLabel("Choose a region: "));
         regionPanel.add(regionList);
