@@ -4,28 +4,28 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import Database.*;
+import Math.*;
 
 public class queries
 {
     String region = "";
     String year = "";
-    List<String> Offspringresults = new ArrayList<String>();
-    List<String> Populationresults = new ArrayList<String>();
-    List<String> PopulationRegionresults = new ArrayList<String>();
     DBConnect dbConnect = new DBConnect();
+    Eigen eigen = new Eigen();
 
     public List<String> getPopulationRegion(){
         String query = "Select population from regionpopulation where region ='" + region + "' AND year = '" + year + "' ;";
-        PopulationRegionresults = dbConnect.connectDB(query);
+        List<String> PopulationRegionresults = dbConnect.connectDB(query);
         return  PopulationRegionresults;
     }
 
-    public List<String> getEstPop(){
+    public double[] getEstPop(){
         String query1 = "Select percentage/100 as percentage from agestructure where age = '0-7' and year >= 2016;";
-        Offspringresults = dbConnect.connectDB(query1);
+        List<String> Offspringresults = dbConnect.connectDB(query1);
         String query2 = "select population from totalpopulation where year>=2015";
-        Populationresults =dbConnect.connectDB(query2);
-        return  Offspringresults;
+        List<String> Populationresults =dbConnect.connectDB(query2);
+        double[] EigenResults = eigen.answer(Offspringresults, Populationresults);
+        return  EigenResults;
     }
 
 

@@ -1,3 +1,5 @@
+package Math;
+
 import cern.colt.matrix.DoubleMatrix2D;
 import cern.colt.matrix.impl.DenseDoubleMatrix2D;
 import cern.colt.matrix.linalg.Algebra;
@@ -131,7 +133,7 @@ public class Eigen{
         p = PxL(p,lambda);
         return p;
     }
-    public static double[] answer(List<String> percentage, List<String> totalPop){
+    public double[] answer(List<String> percentage, List<String> totalPop){
         for (String s: totalPop)
         {
             System.out.println(s);
@@ -160,6 +162,7 @@ public class Eigen{
     }
 
     public static void main(String[] args) {
+        Eigen eigen = new Eigen();
         List<String> pop = new ArrayList<String>();
         {
             pop.add("235662342");
@@ -169,7 +172,7 @@ public class Eigen{
             pop.add("456463423");
             pop.add("647679684");
         }
-        double[] answer = answer(pop, pop);
+        double[] answer = eigen.answer(pop, pop);
         System.out.println("Answer:\n");
         for (double i: answer)
         {
