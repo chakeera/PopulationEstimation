@@ -8,7 +8,7 @@ import java.util.List;
 import static java.lang.Math.*;
 
 public class Eigen{
-    public static List<Double> getEVals(double[][] m, int k){
+    public static double getEVals(double[][] m, int k){
         List<Double> ans = new ArrayList<Double>(); //all positive eigenValues
         List<Double> vector = new ArrayList<Double>();
         Algebra algebra = new Algebra();
@@ -76,9 +76,16 @@ public class Eigen{
                 T[d][e] = X.get(d,e)/norm;
             }
         }
+        double[] c = new double[6];
         DoubleMatrix2D Temp = new DenseDoubleMatrix2D(T);
-        //wait for P Near to do 2 dot product
-        
+        for (int o = 0; o < Temp.rows(); o++) {
+            c[o] = m[o][0]*Temp.get(0,0)+m[o][1]*Temp.get(0,1)+m[o][2]*Temp.get(0,2)+m[o][3]*Temp.get(0,3)+m[o][4]*Temp.get(0,4)+m[o][5]*Temp.get(0,5);
+        }
+        double lam = 0; //another lam
+        for (int z = 0; z < 6; z++) {
+            lam += Temp.get(0,z)*c[z];
+        }
+        return lam;
     }
     public static void main(String[] args) {
         double[][] m = new double[][]{};
