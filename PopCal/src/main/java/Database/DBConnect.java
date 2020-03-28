@@ -8,9 +8,9 @@ import java.util.List;
 
 public class DBConnect
 {
-    public List<String> connectDB(String query)
+    public List<Double> connectDB(String query)
     {
-        List<String> results = new ArrayList<String>();
+        List<Double> results = new ArrayList<Double>();
         try{
             String url = "jdbc:postgresql://localhost:5435/postgres"; // {dbUrl}/{schema}
             String username = "postgres";
@@ -26,7 +26,7 @@ public class DBConnect
             ResultSet resultSet = statement.executeQuery(query); //Enter query
             while (resultSet.next())
             {
-                results.add(resultSet.getString(1));
+                results.add(resultSet.getDouble(1));
             }
 
         } catch (Exception e) {

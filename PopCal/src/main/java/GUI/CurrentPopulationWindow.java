@@ -70,14 +70,14 @@ public class CurrentPopulationWindow {
             public void actionPerformed(ActionEvent e) {
                 queries.setRegion(regionList.getSelectedItem().toString()); //store value into variable region
                 queries.setYear(yearList.getSelectedItem().toString()); //store value into variable year
-                List<String> results = queries.getPopulationregion(); // get List<String> results from database
-                StringBuilder stringBuilder = new StringBuilder(); //build String for print
-                for (String res: results){
-                    stringBuilder.append(res);
-                    stringBuilder.append(" ");
-                }
-                resultLabel.setText("You have chosen year " + yearList.getSelectedItem() + " and region " +
-                regionList.getSelectedItem() + "\n" + stringBuilder.toString());
+                List<Double> results = queries.getPopulationRegion(); // get List<String> results from database
+//                StringBuilder stringBuilder = new StringBuilder(); //build String for print
+//                for (String res: results){
+//                    stringBuilder.append(res);
+//                    stringBuilder.append(" ");
+//                }
+                resultLabel.setText("The year " + yearList.getSelectedItem() + " at region " +
+                regionList.getSelectedItem() + "has a population " + results.get(0).toString());
             }
         });
 
