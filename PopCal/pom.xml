@@ -7,6 +7,11 @@
     <groupId>org.example</groupId>
     <artifactId>PopCal</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-
+    <dependencies>
+        <dependency>
+            <groupId>colt</groupId>
+            <artifactId>colt</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+    </dependencies>
 </project>
