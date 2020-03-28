@@ -8,12 +8,13 @@ public class queries
 {
     String region = "";
     String year = "";
-    List<Double> Offspringresults = new ArrayList<Double>();
-    List<Double> PopulationRegionresults = new ArrayList<Double>();
+    List<Integer> Offspringresults = new ArrayList<Integer>();
+    List<Integer> PopulationRegionresults = new ArrayList<Integer>();
     DBConnect dbConnect = new DBConnect();
 
-    public List<Double> getPopulationRegion(){
-        String query = "Select population from regionpopulation where region ='" + region + "' AND year = " + year + "';";
+    public List<Integer> getPopulationRegion(){
+//        String query = "Select population from regionpopulation where region ='" + region + "' AND year = " + year + "';";
+        String query = "Select budget from department";
         PopulationRegionresults = dbConnect.connectDB(query);
         return  PopulationRegionresults;
     }
@@ -21,7 +22,7 @@ public class queries
 //        this.PopulationRegionresults=  PopulationRegion;
 //    }
 
-    public List<Double> getOffspring(){
+    public List<Integer> getOffspring(){
         String query = "Select population, year from regionpopulation where region =" + region + " && year >= 2013 and <= 2018 ;";
         Offspringresults = dbConnect.connectDB(query);
         return  Offspringresults;

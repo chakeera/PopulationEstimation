@@ -1,23 +1,20 @@
 package Database;
 
-import GUI.*;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBConnect
 {
-    public List<Double> connectDB(String query)
+    public List<Integer> connectDB(String query)
     {
-        List<Double> results = new ArrayList<Double>();
+        List<Integer> results = new ArrayList<Integer>();
         try{
             String url = "jdbc:postgresql://localhost:5435/postgres"; // {dbUrl}/{schema}
             String username = "postgres";
             String password = "1234";
 
             Class.forName("org.postgresql.Driver");
-
 
             Connection connection = DriverManager.getConnection(url, username, password);
 
@@ -26,7 +23,7 @@ public class DBConnect
             ResultSet resultSet = statement.executeQuery(query); //Enter query
             while (resultSet.next())
             {
-                results.add(resultSet.getDouble(1));
+                results.add(resultSet.getInt(1));
             }
 
         } catch (Exception e) {

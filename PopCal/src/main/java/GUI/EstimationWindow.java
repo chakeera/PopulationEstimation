@@ -60,7 +60,7 @@ public class EstimationWindow
         calculateButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 queries.setRegion(regionList.getSelectedItem().toString()); //store value into variable region
-//                List<Double> results = queries.getOffspring(); // get List<String> results from database
+                List<Integer> results = queries.getOffspring(); // get List<String> results from database
 //                StringBuilder stringBuilder = new StringBuilder(); //build String for print
 //                for (String res: results){
 //                    stringBuilder.append(res);
