@@ -122,7 +122,7 @@ public class Eigen{
             q[i] = p[i]*lambda;
         return q;
     }
-    public static double[] getEVec(){
+    public static double[] getEVec(double[] matrix){
         double[][] a = {{10,-12,-6,5,-2,6},{5,-5,-4,2,4,5},{-1,0,76,5,-6,-1},{8,9,6,4,5,6},{4,5,7,-4,-6,2},{7,-3,4,2,6,8}}; //change to matrix from sql
         lambda = getWantedEval();
         double[] q;

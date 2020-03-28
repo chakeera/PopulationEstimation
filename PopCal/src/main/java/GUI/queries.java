@@ -10,6 +10,7 @@ public class queries
     String region = "";
     String year = "";
     List<String> Offspringresults = new ArrayList<String>();
+    List<String> Populationresults = new ArrayList<String>();
     List<String> PopulationRegionresults = new ArrayList<String>();
     DBConnect dbConnect = new DBConnect();
 
@@ -18,19 +19,14 @@ public class queries
         PopulationRegionresults = dbConnect.connectDB(query);
         return  PopulationRegionresults;
     }
-//    public void setPopulationRegion(List<String>  PopulationRegion){
-//        this.PopulationRegionresults=  PopulationRegion;
-//    }
 
-    public List<String> getOffspring(){
-        String query = "Select population, year from regionpopulation where region =" + region + " && year >= 2013 and <= 2018 ;";
-        Offspringresults = dbConnect.connectDB(query);
+    public List<String> getEstPop(){
+        String query1 = "Select percentage/100 as percentage from agestructure where age = '0-7' and year >= 2016;";
+        Offspringresults = dbConnect.connectDB(query1);
+        String query2 = "select population from totalpopulation where year>=2015";
+        Populationresults =dbConnect.connectDB(query2);
         return  Offspringresults;
     }
-
-//    public void setOffspring(List<String> Offspring){
-//        this.Offspringresults=  Offspring;
-//    }
 
 
     public void setYear(String year)
