@@ -101,13 +101,13 @@ public class MainWindow {
                 double[] results = queries.getEstPop();
                 NumberFormat formatter = new DecimalFormat("#0.00");
                 StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append("The estimated population for the following age range is:\n");
-                stringBuilder.append("0-7: " + formatter.format(results[0]) + "\n");
-                stringBuilder.append("8-14: " + formatter.format(results[1]) + "\n");
-                stringBuilder.append("15-21: " + formatter.format(results[2]) + "\n");
-                stringBuilder.append("22-28: " + formatter.format(results[3]) + "\n");
-                stringBuilder.append("29-35: " + formatter.format(results[4]) + "\n");
-                stringBuilder.append("40 and above: " + formatter.format(results[5]));
+                stringBuilder.append("<html><body>The estimated population for the following age range is:<br>");
+                stringBuilder.append("0-7: " + formatter.format(results[0]) + "<br>");
+                stringBuilder.append("8-14: " + formatter.format(results[1]) + "<br>");
+                stringBuilder.append("15-21: " + formatter.format(results[2]) + "<br>");
+                stringBuilder.append("22-28: " + formatter.format(results[3]) + "<br>");
+                stringBuilder.append("29-35: " + formatter.format(results[4]) + "<br>");
+                stringBuilder.append("40 and above: " + formatter.format(results[5]) + "</body></html>");
 
                 resultLabelBottom.setText(stringBuilder.toString());
             }
