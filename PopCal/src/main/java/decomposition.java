@@ -34,10 +34,10 @@ class decomposition {
         return s;
     }
     public static void main(String arr[]) {
-        double mat[][] = { { 2, -1, -2 },
+        double[][] mat = { { 2, -1, -2 },
                 { -4, 6, 3 },
                 { -4, -2, 8 } };
-       luDecomposition(mat, 3);
+        System.out.println(Arrays.deepToString(luDecomposition(mat, 3)));
     }
 }
 
