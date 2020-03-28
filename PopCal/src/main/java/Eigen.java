@@ -8,18 +8,19 @@ import java.util.List;
 import static java.lang.Math.*;
 
 public class Eigen{
-    public List<Double> getEVals(double[][] m, int k){
+    public static List<Double> getEVals(double[][] m, int k){
         List<Double> ans = new ArrayList<Double>(); //all positive eigenValues
         List<Double> vector = new ArrayList<Double>();
         Algebra algebra = new Algebra();
         DoubleMatrix2D matrix;
         DoubleMatrix2D U;
         DoubleMatrix2D X = null;
-        double[] x = new double[k-1];
+        double[] x;
+        x = new double[]{0.38522084, 0.11901903, 0.30045412};
         double sum = 0;
         for (int n = 0; n < k; n++) { //find norm
             for (int j = 0; j < k-1; j++) {
-                sum += x[j];
+                sum += Math.pow(x[j],2);
             }
             double norm = sqrt(sum);
             sum = 0; //reset some for later use
@@ -57,20 +58,34 @@ public class Eigen{
             matrix = new DenseDoubleMatrix2D(temp);
             U = new DenseDoubleMatrix2D(t);
             X = algebra.solve(matrix, U);
+            System.out.println(X);
         }
         double norm = 0;
+        double total = 0;
+        double t = 0;
+        assert X != null;
+        for (int g = 0; g < X.rows(); g++) {
+            for (int h = 0; h < X.columns(); h++) {
+                total += Math.pow(X.get(g,h),2);
+            }
+        }
+        norm = sqrt(total);
+        double[][] T = new double[X.rows()][X.columns()];
+        for (int d = 0; d < k-1; d++) {
+            for (int e = 0; e < k-1; e++) {
+                T[d][e] = X.get(d,e)/norm;
+            }
+        }
+        DoubleMatrix2D Temp = new DenseDoubleMatrix2D(T);
+        for (int r = 0; r < ; i++) {
+
+        }
         double max = 0;
         assert X != null;
         return ans;
     }
-    public double norm1(DoubleMatrix2D A) {
-        double max = 0;
-        for (int column = A.columns(); --column >=0; ) {
-            max = Math.max(max, norm1(A.viewColumn(column)));
-        }
-        return max;
-    }
     public static void main(String[] args) {
-        System.out.println(100);
+        double[][] m = new double[][]{{11, -12, -6}, {5, -5, -4}, {-1, 0, 3}};
+        System.out.println(getEVals(m,4));
     }
 }
