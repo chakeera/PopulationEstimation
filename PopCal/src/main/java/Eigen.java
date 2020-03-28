@@ -1,6 +1,4 @@
-import cern.colt.matrix.DoubleMatrix1D;
 import cern.colt.matrix.DoubleMatrix2D;
-import cern.colt.matrix.impl.DenseDoubleMatrix1D;
 import cern.colt.matrix.impl.DenseDoubleMatrix2D;
 import cern.colt.matrix.linalg.Algebra;
 import java.util.ArrayList;
@@ -8,15 +6,15 @@ import java.util.List;
 import static java.lang.Math.*;
 
 public class Eigen{
-    public static double getEVals(double[][] m, int k){
+    public static double getEVals(double[][] m, int k, double[] x){
         List<Double> ans = new ArrayList<Double>(); //all positive eigenValues
         List<Double> vector = new ArrayList<Double>();
         Algebra algebra = new Algebra();
+        //DoubleMatrix2D A = new DenseDoubleMatrix2D(m);
+        //System.out.println("This is A,"+A);
         DoubleMatrix2D matrix;
         DoubleMatrix2D U;
         DoubleMatrix2D X = null;
-        double[] x;
-        x = new double[]{0.38522084, 0.11901903, 0.30045412};
         double sum = 0;
         for (int n = 0; n < k; n++) { //find norm
             for (int j = 0; j < k-1; j++) {
@@ -33,7 +31,7 @@ public class Eigen{
                 v[l] = m[l][0]*u[0]+m[l][1]*u[1]+m[l][2]*u[2]+m[l][3]*u[3]+m[l][4]*u[4]+m[l][5]*u[5];
             }
             for (int p = 0; p < k-1; p++) { //get lam
-                sum += u[k]*v[k];
+                sum += u[p]*v[p];
             }
             double lam = sum; //end of rayleigh quotient
             sum = 0; //reset some for later use
@@ -51,18 +49,30 @@ public class Eigen{
                     temp[w][s] = m[w][s] - I[w][s];
                 }
             }
-            double[][] t = new double[1][1];
-            t[0] = u;
+            double[][] t = new double[1][6];
+//            for (int z = 0; z < k-1; z++) {
+//               t[0][z] = u[z];
+//            }
             //DoubleMatrix2D matrix = new DenseDoubleMatrix2D(m);
             //DoubleMatrix2D i = new DenseDoubleMatrix2D(I);
             matrix = new DenseDoubleMatrix2D(temp);
-            U = new DenseDoubleMatrix2D(t);
+//            matrix = new DenseDoubleMatrix2D(6,6);
+//            for (int p = 0; p < k-1; p++) {
+//                for (int z = 0; z < k-1; z++) {
+//                    matrix.set(p,z,temp[p][z]);
+//                }
+//            }
+            //System.out.println("This is temp,"+ Arrays.deepToString(temp));
+            U = new DenseDoubleMatrix2D(6,1);
+            for (int z = 0; z < k-1; z++) {
+                U.set(z,0,u[z]);
+            }
+            //System.out.println("This is U," + U);
             X = algebra.solve(matrix, U);
-            System.out.println(X);
+            //System.out.println("This is X," + X);
         }
         double norm = 0;
         double total = 0;
-        double t = 0;
         assert X != null;
         for (int g = 0; g < X.rows(); g++) {
             for (int h = 0; h < X.columns(); h++) {
@@ -70,25 +80,37 @@ public class Eigen{
             }
         }
         norm = sqrt(total);
-        double[][] T = new double[X.rows()][X.columns()];
+        double[][] T = new double[X.rows()][1];
         for (int d = 0; d < k-1; d++) {
             for (int e = 0; e < k-1; e++) {
-                T[d][e] = X.get(d,e)/norm;
+                T[d][0] = X.get(e,0)/norm;
             }
         }
         double[] c = new double[6];
         DoubleMatrix2D Temp = new DenseDoubleMatrix2D(T);
         for (int o = 0; o < Temp.rows(); o++) {
-            c[o] = m[o][0]*Temp.get(0,0)+m[o][1]*Temp.get(0,1)+m[o][2]*Temp.get(0,2)+m[o][3]*Temp.get(0,3)+m[o][4]*Temp.get(0,4)+m[o][5]*Temp.get(0,5);
+            c[o] = m[o][0]*Temp.get(0,0)+m[o][1]*Temp.get(1,0)+m[o][2]*Temp.get(2,0)+m[o][3]*Temp.get(3,0)+m[o][4]*Temp.get(4,0)+m[o][5]*Temp.get(5,0);
         }
         double lam = 0; //another lam
         for (int z = 0; z < 6; z++) {
-            lam += Temp.get(0,z)*c[z];
+            lam += Temp.get(z,0)*c[z];
         }
         return lam;
     }
+
+    public static double getRandomDoubleBetweenRange(double min, double max){
+        return (Math.random()*((max-min)+1))+min;
+    }
     public static void main(String[] args) {
-        double[][] m = new double[][]{};
-        System.out.println(getEVals(m,4));
+        double[][] m = new double[][] {{10,-12,-6,5,-2,6},{5,-5,-4,2,4,5},{-1,0,76,5,-6,-1},{8,9,6,4,5,6},{4,5,7,-4,-6,2},{7,-3,4,2,6,8}};
+        double[] x = new double[6];
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 6; j++) {
+                x[j] = getRandomDoubleBetweenRange(-1,1);
+            }
+            double lam = 0;
+            lam = getEVals(m,7,x);
+            System.out.println(lam);
+        }
     }
 }
