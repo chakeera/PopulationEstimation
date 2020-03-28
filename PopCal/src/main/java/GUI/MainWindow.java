@@ -27,7 +27,7 @@ public class MainWindow {
         TitledBorder topTitle = BorderFactory.createTitledBorder("Population in Thailand");
         topTitle.setTitleJustification(TitledBorder.CENTER);
         topPanel.setBorder(topTitle);
-        topPanel.setPreferredSize(new Dimension(width-25, height/2));
+        topPanel.setPreferredSize(new Dimension(width-25, height/3));
 //
         //Enter Year Panel
         JPanel yearPanel = new JPanel();
@@ -51,7 +51,7 @@ public class MainWindow {
 
         JPanel resultPanelTop = new JPanel();
         resultPanelTop.setBorder(BorderFactory.createTitledBorder("Result"));
-        resultPanelTop.setPreferredSize(new Dimension(width-50, (height/2)/2));
+        resultPanelTop.setPreferredSize(new Dimension(width-50, (height/2)/4));
         resultPanelTop.add(resultLabel);
 
         topPanel.add(yearPanel);
@@ -64,7 +64,7 @@ public class MainWindow {
         TitledBorder bottomTitle = BorderFactory.createTitledBorder("Population Estimation");
         bottomTitle.setTitleJustification(TitledBorder.CENTER);
         bottomPanel.setBorder(bottomTitle);
-        bottomPanel.setPreferredSize(new Dimension(width-25, height/4));
+        bottomPanel.setPreferredSize(new Dimension(width-25, height/2));
 
         JButton estimatePopButton = new JButton("Estimate Population");
         final JLabel resultLabelBottom = new JLabel();
