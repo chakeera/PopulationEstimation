@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class CurrentPopulationWindow {
@@ -25,7 +26,7 @@ public class CurrentPopulationWindow {
 
         //Enter Year Panel
         JPanel yearPanel = new JPanel();
-        String[] years = {"2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016",
+        String[] years = {"2013", "2014", "2015", "2016",
                 "2017", "2018", "2019", "2020"};
         final JComboBox yearList = new JComboBox(years);
         yearPanel.add(new JLabel("Choose a year: "));
@@ -33,7 +34,7 @@ public class CurrentPopulationWindow {
 
         //Enter Region Panel
         JPanel regionPanel = new JPanel();
-        String[] regions = {"Bangkok", "Central", "North-Eastern", "Northern", "Southern"};
+        String[] regions = {"Bangkok", "Central", "North-eastern", "Northern", "Southern"};
         final JComboBox regionList = new JComboBox(regions);
         regionPanel.add(new JLabel("Choose a region: "));
         regionPanel.add(regionList);
@@ -70,7 +71,8 @@ public class CurrentPopulationWindow {
             public void actionPerformed(ActionEvent e) {
                 queries.setRegion(regionList.getSelectedItem().toString()); //store value into variable region
                 queries.setYear(yearList.getSelectedItem().toString()); //store value into variable year
-                List<Integer> results = queries.getPopulationRegion(); // get List<String> results from database
+                List<String> results = queries.getPopulationRegion();
+                System.out.println(results);// get List<String> results from database
 //                StringBuilder stringBuilder = new StringBuilder(); //build String for print
 //                for (String res: results){
 //                    stringBuilder.append(res);

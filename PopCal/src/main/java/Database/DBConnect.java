@@ -1,14 +1,15 @@
 package Database;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBConnect
 {
-    public List<Integer> connectDB(String query)
+    public List<String> connectDB(String query)
     {
-        List<Integer> results = new ArrayList<Integer>();
+        List<String> results = new ArrayList<String>();
         try{
             String url = "jdbc:postgresql://localhost:5435/postgres"; // {dbUrl}/{schema}
             String username = "postgres";
@@ -21,9 +22,8 @@ public class DBConnect
             Statement statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery(query); //Enter query
-            while (resultSet.next())
-            {
-                results.add(resultSet.getInt(1));
+            while (resultSet.next()) {
+                results.add(resultSet.getString(1));
             }
 
         } catch (Exception e) {

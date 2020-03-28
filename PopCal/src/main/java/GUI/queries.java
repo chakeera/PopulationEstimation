@@ -1,5 +1,6 @@
 package GUI;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import Database.*;
@@ -8,13 +9,12 @@ public class queries
 {
     String region = "";
     String year = "";
-    List<Integer> Offspringresults = new ArrayList<Integer>();
-    List<Integer> PopulationRegionresults = new ArrayList<Integer>();
+    List<String> Offspringresults = new ArrayList<String>();
+    List<String> PopulationRegionresults = new ArrayList<String>();
     DBConnect dbConnect = new DBConnect();
 
-    public List<Integer> getPopulationRegion(){
-//        String query = "Select population from regionpopulation where region ='" + region + "' AND year = " + year + "';";
-        String query = "Select budget from department";
+    public List<String> getPopulationRegion(){
+        String query = "Select population from regionpopulation where region ='" + region + "' AND year = '" + year + "' ;";
         PopulationRegionresults = dbConnect.connectDB(query);
         return  PopulationRegionresults;
     }
@@ -22,7 +22,7 @@ public class queries
 //        this.PopulationRegionresults=  PopulationRegion;
 //    }
 
-    public List<Integer> getOffspring(){
+    public List<String> getOffspring(){
         String query = "Select population, year from regionpopulation where region =" + region + " && year >= 2013 and <= 2018 ;";
         Offspringresults = dbConnect.connectDB(query);
         return  Offspringresults;
