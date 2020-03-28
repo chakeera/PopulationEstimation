@@ -125,7 +125,7 @@ public class Eigen{
         return q;
     }
     public static double[] getEVec(double[][] matrix){
-        double[][] a = {{10,-12,-6,5,-2,6},{5,-5,-4,2,4,5},{-1,0,76,5,-6,-1},{8,9,6,4,5,6},{4,5,7,-4,-6,2},{7,-3,4,2,6,8}}; //change to matrix from sql
+        double[][] a = matrix; //change to matrix from sql
         lambda = getWantedEval();
         double[] q;
         q = p;
@@ -133,17 +133,22 @@ public class Eigen{
         p = PxL(p,lambda);
         return p;
     }
-    public double[] answer(List<String> percentage, List<String> totalPop){
-        for (String s: totalPop)
+    public double[] answer(List<String> offSpring, List<String> peopleSurvive){
+        for (String s: peopleSurvive)
         {
             System.out.println(s);
         }
-        double[][] m = {{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,-0,0,0},{0,0,0,0,0,0}}; //change to matrix from sql
-        m[0][0] = Double.parseDouble(totalPop.get(0));
-        for (int i = 1; i < totalPop.size(); i++)
+        double[][] m = {{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0}}; //change to matrix from sql
+
+        for (int i = 1; i < peopleSurvive.size(); i++)
         {
-            m[i][i] = Double.parseDouble(totalPop.get(i-1))/Double.parseDouble(totalPop.get(i));
+            m[i][i-1] = Double.parseDouble(peopleSurvive.get(i-1))/Double.parseDouble(peopleSurvive.get(i));
         }
+
+        for(int i = 1; i< offSpring.size();i++){
+            m[0][i]= Double.parseDouble(offSpring.get(i-1));
+        }
+//        for printing matrix
         for (double[] i: m)
         {
             for (double j: i)
@@ -161,23 +166,32 @@ public class Eigen{
         return v;
     }
 
-    public static void main(String[] args) {
-        Eigen eigen = new Eigen();
-        List<String> pop = new ArrayList<String>();
-        {
-            pop.add("235662342");
-            pop.add("345768974");
-            pop.add("465773453");
-            pop.add("353632245");
-            pop.add("456463423");
-            pop.add("647679684");
-        }
-        double[] answer = eigen.answer(pop, pop);
-        System.out.println("Answer:\n");
-        for (double i: answer)
-        {
-            System.out.print(i);
-            System.out.println(" ");
-        }
-    }
+//    public static void main(String[] args) {
+//        Eigen eigen = new Eigen();
+//        List<String> pop = new ArrayList<String>();
+//        {
+//            pop.add("235662342");
+//            pop.add("345768974");
+//            pop.add("465773453");
+//            pop.add("353632245");
+//            pop.add("456463423");
+//            pop.add("647679684");
+//        }
+//        List<String> off = new ArrayList<String>();
+//        {
+//            off.add("123");
+//            off.add("123");
+//            off.add("123");
+//            off.add("123");
+//            off.add("123");
+//            off.add("123");
+//        }
+//        double[] answer = eigen.answer(off, pop);
+//        System.out.println("Answer:\n");
+//        for (double i: answer)
+//        {
+//            System.out.print(i);
+//            System.out.println(" ");
+//        }
+//    }
 }

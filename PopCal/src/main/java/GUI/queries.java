@@ -22,7 +22,7 @@ public class queries
     public double[] getEstPop(){
         String query1 = "Select percentage/100 as percentage from agestructure where age = '0-7' and year >= 2016;";
         List<String> Offspringresults = dbConnect.connectDB(query1);
-        String query2 = "select population from totalpopulation where year>=2015";
+        String query2 = "select population from totalpopulation where year>=2015 and year<=2019";
         List<String> Populationresults =dbConnect.connectDB(query2);
         double[] EigenResults = eigen.answer(Offspringresults, Populationresults);
         return  EigenResults;
