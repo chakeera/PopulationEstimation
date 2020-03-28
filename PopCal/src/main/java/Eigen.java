@@ -122,7 +122,7 @@ public class Eigen{
             q[i] = p[i]*lambda;
         return q;
     }
-    public static double[] getEVec(double[] matrix){
+    public static double[] getEVec(double[][] matrix){
         double[][] a = {{10,-12,-6,5,-2,6},{5,-5,-4,2,4,5},{-1,0,76,5,-6,-1},{8,9,6,4,5,6},{4,5,7,-4,-6,2},{7,-3,4,2,6,8}}; //change to matrix from sql
         lambda = getWantedEval();
         double[] q;
@@ -131,13 +131,50 @@ public class Eigen{
         p = PxL(p,lambda);
         return p;
     }
-    public static double[] answer(){
-        double[] u = getEVec();
-        double[][] m = {{10,-12,-6,5,-2,6},{5,-5,-4,2,4,5},{-1,0,76,5,-6,-1},{8,9,6,4,5,6},{4,5,7,-4,-6,2},{7,-3,4,2,6,8}}; //change to matrix from sql
+    public static double[] answer(List<String> percentage, List<String> totalPop){
+        for (String s: totalPop)
+        {
+            System.out.println(s);
+        }
+        double[][] m = {{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,-0,0,0},{0,0,0,0,0,0}}; //change to matrix from sql
+        m[0][0] = Double.parseDouble(totalPop.get(0));
+        for (int i = 1; i < totalPop.size(); i++)
+        {
+            m[i][i] = Double.parseDouble(totalPop.get(i-1))/Double.parseDouble(totalPop.get(i));
+        }
+        for (double[] i: m)
+        {
+            for (double j: i)
+            {
+                System.out.print(j);
+                System.out.print(" ");
+            }
+            System.out.println();
+        }
+        double[] u = getEVec(m);
         double[] v = new double[u.length];
         for (int l = 0; l < m.length; l++) {
             v[l] = m[l][0]*u[0]+m[l][1]*u[1]+m[l][2]*u[2]+m[l][3]*u[3]+m[l][4]*u[4]+m[l][5]*u[5];
         }
         return v;
+    }
+
+    public static void main(String[] args) {
+        List<String> pop = new ArrayList<String>();
+        {
+            pop.add("235662342");
+            pop.add("345768974");
+            pop.add("465773453");
+            pop.add("353632245");
+            pop.add("456463423");
+            pop.add("647679684");
+        }
+        double[] answer = answer(pop, pop);
+        System.out.println("Answer:\n");
+        for (double i: answer)
+        {
+            System.out.print(i);
+            System.out.println(" ");
+        }
     }
 }
