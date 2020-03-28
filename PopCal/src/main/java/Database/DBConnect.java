@@ -12,9 +12,9 @@ public class DBConnect
     {
         List<String> results = new ArrayList<String>();
         try{
-            String url = ""; // {dbUrl}/{schema}
-            String username = "";
-            String password = "";
+            String url = "jdbc:postgresql://localhost:5435/postgres"; // {dbUrl}/{schema}
+            String username = "postgres";
+            String password = "1234";
 
             Class.forName("org.postgresql.Driver");
 
