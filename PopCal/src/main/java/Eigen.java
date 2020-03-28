@@ -1,6 +1,8 @@
 import cern.colt.matrix.DoubleMatrix2D;
 import cern.colt.matrix.impl.DenseDoubleMatrix2D;
 import cern.colt.matrix.linalg.Algebra;
+import com.sun.deploy.security.SelectableSecurityManager;
+
 import java.util.ArrayList;
 import java.util.List;
 import static java.lang.Math.*;
@@ -101,16 +103,26 @@ public class Eigen{
     public static double getRandomDoubleBetweenRange(double min, double max){
         return (Math.random()*((max-min)+1))+min;
     }
-    public static void main(String[] args) {
+    public static double getWantedEval(){
+        double[] ans = new double[20];
         double[][] m = new double[][] {{10,-12,-6,5,-2,6},{5,-5,-4,2,4,5},{-1,0,76,5,-6,-1},{8,9,6,4,5,6},{4,5,7,-4,-6,2},{7,-3,4,2,6,8}};
         double[] x = new double[6];
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 6; j++) {
-                x[j] = getRandomDoubleBetweenRange(-1,1);
+                x[j] = getRandomDoubleBetweenRange(-0.3,0.45);
             }
             double lam = 0;
             lam = getEVals(m,7,x);
-            System.out.println(lam);
+            ans[i] = lam;
         }
+        for (int i = 0; i < ans.length; i++) {
+            if (ans[i] > 0){
+                return ans[i];
+            }
+        }
+        return 0;
+    }
+    public static void main(String[] args) {
+        System.out.println(getWantedEval());
     }
 }
