@@ -77,15 +77,11 @@ public class Eigen{
             }
         }
         DoubleMatrix2D Temp = new DenseDoubleMatrix2D(T);
-        for (int r = 0; r < ; i++) {
-
-        }
-        double max = 0;
-        assert X != null;
-        return ans;
+        //wait for P Near to do 2 dot product
+        
     }
     public static void main(String[] args) {
-        double[][] m = new double[][]{{11, -12, -6}, {5, -5, -4}, {-1, 0, 3}};
+        double[][] m = new double[][]{};
         System.out.println(getEVals(m,4));
     }
 }
