@@ -85,9 +85,9 @@ public class Eigen{
     public static double getRandomDoubleBetweenRange(double min, double max){
         return (Math.random()*((max-min)+1))+min;
     }
-    public static double getWantedEval(){
+    public static double getWantedEval(double[][] matrix){
         double[] ans = new double[20];
-        double[][] m = new double[][] {{10,-12,-6,5,-2,6},{5,-5,-4,2,4,5},{-1,0,76,5,-6,-1},{8,9,6,4,5,6},{4,5,7,-4,-6,2},{7,-3,4,2,6,8}};// change to matrix from db
+        double[][] m = matrix;// change to matrix from db
         double[] x = new double[6];
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 6; j++) {
@@ -122,7 +122,7 @@ public class Eigen{
     }
     public static double[] getEVec(double[][] matrix){
         double[][] a = matrix; //change to matrix from sql
-        lambda = getWantedEval();
+        lambda = getWantedEval(matrix);
         double[] q;
         q = p;
         p = AxP(a,q);
