@@ -3,10 +3,6 @@ package Math;
 import cern.colt.matrix.DoubleMatrix2D;
 import cern.colt.matrix.impl.DenseDoubleMatrix2D;
 import cern.colt.matrix.linalg.Algebra;
-import com.sun.deploy.security.SelectableSecurityManager;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import static java.lang.Math.*;
 
