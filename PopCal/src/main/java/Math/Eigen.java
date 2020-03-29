@@ -97,6 +97,10 @@ public class Eigen{
             lam = getEVals(m,7,x);
             ans[i] = lam;
         }
+        System.out.println("array ans");
+        for (int i = 0; i <ans.length ; i++) {
+            System.out.println(ans[i]);
+        }
         for (double an : ans) {
             if (an > 0) {
                 return an;
@@ -127,6 +131,10 @@ public class Eigen{
         q = p;
         p = AxP(a,q);
         p = PxL(p,lambda);
+        System.out.println("p");
+        for (int i = 0; i <p.length ; i++) {
+            System.out.println(p[i]);
+        }
         return p;
     }
     public double[] answer(List<String> offSpring, List<String> peopleSurvive){
@@ -135,28 +143,28 @@ public class Eigen{
             System.out.println(s);
         }
         double[][] m = {{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0}}; //change to matrix from sql
-
-        for (int i = 1; i < peopleSurvive.size(); i++)
+        for (int i = 1; i <= peopleSurvive.size(); i++)
         {
-            m[i][i-1] = Double.parseDouble(peopleSurvive.get(i-1))/Double.parseDouble(peopleSurvive.get(i));
+            m[i][i-1] = Math.abs(Double.parseDouble(peopleSurvive.get(i-1))-Double.parseDouble(peopleSurvive.get(i)));
         }
 
-        for(int i = 1; i< offSpring.size();i++){
+        for(int i = 1; i<= offSpring.size();i++){
             m[0][i]= Double.parseDouble(offSpring.get(i-1));
         }
 //        for printing matrix
-        for (double[] i: m)
-        {
-            for (double j: i)
-            {
-                System.out.print(j);
-                System.out.print(" ");
-            }
-            System.out.println();
-        }
+//        for (double[] i: m)
+//        {
+//            for (double j: i)
+//            {
+//                System.out.print(j);
+//                System.out.print(" ");
+//            }
+//            System.out.println();
+//        }
         double[] u = getEVec(m);
         double[] v = new double[u.length];
         for (int l = 0; l < m.length; l++) {
+
             v[l] = m[l][0]*u[0]+m[l][1]*u[1]+m[l][2]*u[2]+m[l][3]*u[3]+m[l][4]*u[4]+m[l][5]*u[5];
         }
         return v;
