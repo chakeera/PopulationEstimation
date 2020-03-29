@@ -1,6 +1,5 @@
 package Database;
 
-import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +29,5 @@ public class DBConnect
             System.out.println(e);
         }
         return results;
-    }
-
-    public static void main(String[] args) {
-        DBConnect dbConnect = new DBConnect();
-//        dbConnect.connectDB();
     }
 }

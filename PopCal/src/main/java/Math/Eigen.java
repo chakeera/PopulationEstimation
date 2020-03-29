@@ -138,29 +138,15 @@ public class Eigen{
         return p;
     }
     public double[] answer(List<String> offSpring, List<String> peopleSurvive){
-        for (String s: peopleSurvive)
-        {
-            System.out.println(s);
-        }
         double[][] m = {{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0}}; //change to matrix from sql
-        for (int i = 1; i <= peopleSurvive.size(); i++)
+        for (int i = 1; i < peopleSurvive.size(); i++)
         {
-            m[i][i-1] = Math.abs(Double.parseDouble(peopleSurvive.get(i-1))-Double.parseDouble(peopleSurvive.get(i)));
+            m[i][i-1] = Double.parseDouble(peopleSurvive.get(i))/Double.parseDouble(peopleSurvive.get(i-1));
         }
-
         for(int i = 1; i<= offSpring.size();i++){
             m[0][i]= Double.parseDouble(offSpring.get(i-1));
         }
-//        for printing matrix
-//        for (double[] i: m)
-//        {
-//            for (double j: i)
-//            {
-//                System.out.print(j);
-//                System.out.print(" ");
-//            }
-//            System.out.println();
-//        }
+
         double[] u = getEVec(m);
         double[] v = new double[u.length];
         for (int l = 0; l < m.length; l++) {
